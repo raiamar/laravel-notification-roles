@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
@@ -127,5 +129,21 @@ class HomeController extends Controller
         $data = \App\Models\Notification::orderBy('id');
         $data->delete();
         return redirect('/home');
+    }
+
+
+    public function show_product(){
+        $product = Product::all();
+        $user = Auth::user();
+
+        // return $user;
+        return view('products', compact('product', 'user'));
+    }
+
+    public function delete_product($id){
+        // $this->authorize('delete', $product);
+        $product = Product::find($id);
+        $product->delete();
+        return redirect('show-product');
     }
 }

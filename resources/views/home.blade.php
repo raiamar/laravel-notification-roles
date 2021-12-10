@@ -53,7 +53,7 @@
 
 
 
-
+<a href="show-product" type="button" class="btn btn-primary">Show</a>
 
 
 

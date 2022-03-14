@@ -32,6 +32,7 @@ class SendProductNotification
     {
         // dd('ia ma in listener');
         $admins = User::where('id', 1)->get();
+        //$admin is user who receives the notification
         Notification::send($admins, new ProductNotification($event->product));
     }
 
